@@ -15,6 +15,6 @@ if __name__ == '__main__':
 
     utils = ModelUtils().build(model).compose(lr=1e-3)
     utils.open_checkpoint_output_image(out_dir="./out/resnet/").open_checkpoint(only_best=True)
-    utils.train(epochs=20, train_dataloader=train_dataloader, test_dataloader=test_dataloader)
+    utils.train(epochs=10, train_dataloader=train_dataloader, test_dataloader=test_dataloader)
 
 

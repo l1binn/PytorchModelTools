@@ -6,11 +6,11 @@ This tool can quickly build models, fine tune, output graphs, excel, models and 
 
 ### environment
 ```
-Pytorch 1.8.0
-cuda 11.1
+Pytorch 1.0
+cuda 10
 Python 3.6
 ```
-### How to use?
+### How to easy use?
 
 1.  get a model, you can make one or copy one, and replace classifier. such as:
 ```python
@@ -42,7 +42,7 @@ training epoch[1]: 100%|██████████| 179/179 [00:17<00:00, 10
 evaluate epoch[1]: 100%|██████████| 23/23 [00:01<00:00, 14.06it/s, test_all_loss=1.17, test_loss=1.37, test_rank1=0.631, test_rank5=0.948]
 ```
 
-### A Sample, 87 classes Gemstones Classfication
+### A Sample, 87 classes gemstones classfication
 Already dowmload dataset in ```dataset/Gemstones.7z```, and you need to unzip
 
 #### MyDataset
@@ -53,6 +53,7 @@ dataset_name
    │  ├─ class 1
    │  ├─ class 2
    │  ├─ ...
+   │
    └─train
       ├─ class 1
       ├─ class 2
@@ -62,6 +63,81 @@ you only need to modify **data_path** in ```demo/gemstones_dataset.py```
 
 #### Use resnet34 model to classify Gemstones
 python file in ```demo/resnet_demo1.py```, you only need to click running this file.
+
+### How to use ModelUtils?
+ModelUtils is developed based on Pytorch Model.
+
+Part of my approach to ModelUtils implementation uses the same **chained programming** as ```jQuery```
+
+#### Get Model
+So,you first need to get model object.
+
+For simplicity, I simply grab the already defined model.
+
+```python
+from torchvision.models import resnet34
+model = resnet34(pretrained=True)
+```
+
+#### Using ModelUtils load the model and initialize it
+Get ModelUtils object, and use build() method, 
+build() first parameter need a pytorch model(nn.module)
+```python
+from utils import ModelUtils
+utils = ModelUtils().build(model)
+```
+Now the model has been transferred to CUDA, if you have a CUDA.
+
+#### Setting Training Parameters
+compose have 
+```python
+utils.compose(lr=1e-3)
+```
+The compose method has a number of parameters that can be passed to the `optimizer`, `scheduler`, 
+`loss function`, etc. 
+
+If this is two classes classfication task, you can open `is_two_category=True`.
+Will output automatically `Recall`, `Specificity` and `F1-score` etc.
+
+Even you can turn on semi-precision training ,use `is_half=True`.
+
+for example:
+```python
+optimizer = torch.optim.RMSprop(model.parameters(), lr=1e-5)
+scheduler = torch.optim.lr_scheduler.ExponentialLR(optimizer, gamma=0.95)
+utils = ModelUtils().build(model).compose(optimizer=optimizer, scheduler=scheduler,is_two_category=True)
+```
+
+but you can also **choose to set nothing at all**. 
+
+The default for the loss function is `CrosSentroPyLoss`, 
+and the default for the optimizer is `SGD`. 
+Learning Rate Decay Default `ExponentiAllr (Optimizer, Gamma =0.99)`
+
+#### Set up automatic output model, automatic output loss accuracy, etc
+If you want to train the output model one at a time, the open_checkpoint method does not require any parameters
+```python
+utils.open_checkpoint_output_image(out_dir="./out/resnet/").open_checkpoint(only_best=True)
+```
+
+##### output trained excel
+When you are done, you can use the method to output the Excel table
+```python
+utils.output_trained_excel()
+```
+
+##### training
+A DataSet must conform to the Python specification and return a  tuple(image, label), 
+for example:```demo/gemstones_dataset.py```
+
+```python
+utils.train(epochs=10, train_dataloader=train_dataloader, test_dataloader=test_dataloader)
+```
+
+**NOTE:** If the model adds softmax at the end, 
+change `is_softmax = True` and do not use the cross-entropy cost function
+
+
 
 
 
