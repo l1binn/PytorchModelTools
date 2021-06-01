@@ -1,16 +1,16 @@
 
 # Pytorch model building tools
 
-#### introduction
+### introduction
 This tool can quickly build models, fine tune, output graphs, excel, models and so on.
 
-#### environment
+### environment
 ```
 Pytorch 1.8.0
 cuda 11.1
 Python 3.6
 ```
-#### How to use?
+### How to use?
 
 1.  get a model, you can make one or copy one, and replace classifier. such as:
 ```python
@@ -42,9 +42,10 @@ training epoch[1]: 100%|██████████| 179/179 [00:17<00:00, 10
 evaluate epoch[1]: 100%|██████████| 23/23 [00:01<00:00, 14.06it/s, test_all_loss=1.17, test_loss=1.37, test_rank1=0.631, test_rank5=0.948]
 ```
 
-#### A Sample, Gemsones Classfication
+### A Sample, 87 classes Gemstones Classfication
 Already dowmload dataset in ```dataset/Gemstones.7z```, and you need to unzip
-##### MyDataset
+
+#### MyDataset
 if your dataset like this:
 ```
 dataset_name
@@ -58,6 +59,15 @@ dataset_name
       ├─ ...
 ```
 you only need to modify **data_path** in ```demo/gemstones_dataset.py```
+
+#### Use resnet34 model to classify Gemstones
+python file in ```demo/resnet_demo1.py```, you only need to click running this file.
+
+
+
+
+
+
 
 
 
