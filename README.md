@@ -120,13 +120,13 @@ If you want to train the output model one at a time, the open_checkpoint method 
 utils.open_checkpoint_output_image(out_dir="./out/resnet/").open_checkpoint(only_best=True)
 ```
 
-##### output trained excel
+#### output trained excel
 When you are done, you can use the method to output the Excel table
 ```python
 utils.output_trained_excel()
 ```
 
-##### training
+#### training
 A DataSet must conform to the Python specification and return a  tuple(image, label), 
 for example:```demo/gemstones_dataset.py```
 
