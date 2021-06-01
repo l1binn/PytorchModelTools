@@ -4,6 +4,8 @@
 ### introduction
 This tool can quickly build models, fine tune, output graphs, excel, models and so on.
 
+**usage：** `Image Classification`
+
 ### environment
 ```
 Pytorch 1.0
