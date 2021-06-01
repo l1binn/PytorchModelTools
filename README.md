@@ -122,7 +122,7 @@ If you want to train the output model one at a time, the open_checkpoint method 
 ```python
 utils.open_checkpoint_output_image(out_dir="./out/resnet/").open_checkpoint(only_best=True)
 ```
-**output image such as below image.**
+**output image such as below image:**
 ![IMAGE](./demo/out/resnet/rank1_Image.jpg)
 
 #### output trained excel
