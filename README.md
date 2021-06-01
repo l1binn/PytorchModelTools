@@ -5,12 +5,11 @@
 This tool can quickly build models, fine tune, output graphs, excel, models and so on.
 
 #### environment
+```
 Pytorch 1.8.0
-
 cuda 11.1
-
 Python 3.6
-
+```
 #### How to use?
 
 1.  get a model, you can make one or copy one, and replace classifier. such as:
