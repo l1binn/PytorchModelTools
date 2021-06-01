@@ -62,7 +62,10 @@ dataset_name
 you only need to modify **data_path** in ```demo/gemstones_dataset.py```
 
 #### Use resnet34 model to classify Gemstones
-python file in ```demo/resnet_demo1.py```, you only need to click running this file.
+**example file** in ```demo/resnet_demo1.py```,
+**you only need to click running this file** and you can understand How to use this.
+
+
 
 ### How to use ModelUtils?
 ModelUtils is developed based on Pytorch Model.
