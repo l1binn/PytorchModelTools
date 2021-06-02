@@ -12,6 +12,11 @@ Pytorch 1.0
 cuda 10
 Python 3.6
 ```
+#### some package
+```shell
+pip install progressbar xlwt tqdm matplotlib numpy
+```
+
 ### How to easy use?
 
 1.  get a model, you can make one or copy one, and replace classifier. such as:
