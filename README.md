@@ -51,15 +51,24 @@ Already dowmload dataset in ```dataset/Gemstones.7z```, and you need to unzip
 if your dataset like this:
 ```
 dataset_name
-   ├─test
-   │  ├─ class 1
-   │  ├─ class 2
-   │  ├─ ...
-   │
-   └─train
-      ├─ class 1
-      ├─ class 2
-      ├─ ...
+├── train
+│   ├── class1
+│   │   ├── img1.jpg
+│   │   ├── img2.jpg
+│   │   └── ...
+│   ├── class2
+│   │   ├── img3.jpg
+│   │   └── ...
+│   └── ...
+└── test
+    ├── class1
+    │   ├── img4.jpg
+    │   ├── img5.jpg
+    │   └── ...
+    ├── class2
+    │   ├── img6.jpg
+    │   └── ...
+    └── ...
 ```
 you only need to modify **data_path** in ```demo/gemstones_dataset.py```
 
