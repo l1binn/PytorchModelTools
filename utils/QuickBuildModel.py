@@ -11,6 +11,7 @@ import random
 
 def setup_seed(seed):
     #  Setting random seed
+    print("[Setting]seed is [{}]".format(seed))
     torch.manual_seed(seed)
     torch.cuda.manual_seed_all(seed)
     np.random.seed(seed)
@@ -98,6 +99,12 @@ class ModelUtils(object):
         # 是否是半精度训练
         if is_half:
             self.half()
+
+        # Print Setting Environment
+        setting_info = """model:{}\nloss_fc:{}\noptimizer:{}""".format(self.model.__class__.__name__,
+                   self.loss_fc,
+                   self.optimizer)
+        print(setting_info)
         return self
 
     def fine_tuning(self, epochs=None, train_dataloader=None, test_dataloader=None, is_record_history=True):
@@ -128,6 +135,8 @@ class ModelUtils(object):
 
         return self
 
+
+
     def train(self,
               epochs=None,
               train_dataloader=None,
@@ -138,6 +147,8 @@ class ModelUtils(object):
         """训练循环，要支持微调
         注意：如果模型最后有加softmax，请将is_softmax改为True，同时请不要用交叉熵代价函数
         """
+
+
         for epoch in range(epochs):
             training_loss = 0.0
             training_rank1 = 0
