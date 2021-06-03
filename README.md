@@ -1,21 +1,30 @@
 
 # Pytorch model building tools
 
-### introduction
+### Introduction
 This tool can quickly build models, fine tune, output graphs, excel, models and so on.
 
-**usage：** `Image Classification`
+**Purpose：** `Image Classification`
 
-### environment
+### Environment
 ```
 Pytorch 1.0
 cuda 10
 Python 3.6
 ```
-#### some package
+#### Some package
 ```shell
 pip install progressbar xlwt tqdm matplotlib numpy
 ```
+
+### Update
+#### 03/06/2021 update 
+add set random seed methods `setup_seed()` in the `utils/QuickBuildModel`
+```python
+from utils import setup_seed
+setup_seed(123)
+```
+
 
 ### How to easy use?
 
