@@ -18,6 +18,10 @@ def setup_seed(seed):
     random.seed(seed)
     torch.backends.cudnn.deterministic = True
 
+def set_random_seed():
+    seed = int(random.random() * 1000)
+    setup_seed(seed)
+
 class ModelUtils(object):
 
     def __init__(self):

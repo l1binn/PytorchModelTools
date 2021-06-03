@@ -24,7 +24,12 @@ add set random seed methods `setup_seed()` in the `utils/QuickBuildModel`
 from utils import setup_seed
 setup_seed(123)
 ```
-and add print setting info.
+**OR**
+```python
+from utils import set_random_seed
+set_random_seed()
+```
+other update: add print setting info.
 
 
 ### How to easy use?
